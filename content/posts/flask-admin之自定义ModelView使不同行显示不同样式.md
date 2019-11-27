@@ -12,7 +12,7 @@ tags:
 
 如果有使用过[django-suit](https://github.com/darklow/django-suit)—一个django admin的美化框架，这个框架的话，其admin设置中可以使用suit_row_attributes这个方法，在后台表单中设置表单列表中不同的行有不同的属性。这个方法在有些情况下很有用，比如说订单列表可以根据不同的订单状态在表单中呈现不同的样式，比如支付成功的可以设置为bootstrap的table-success，支付失败的可以设置为table-danger，这样在查看后台表单的时候可以更加一目了然。代码类似于下面这样：
 
-```python3
+```python
 
     def suit_row_attributes(self, obj->Order, request):
         css = {
@@ -57,7 +57,7 @@ tags:
 然后在ModelView里面自定义ModelView:
 
 
-```python3
+```python
 
 class BaseModelView(ModelView):
     column_display_pk = True
@@ -73,7 +73,7 @@ class BaseModelView(ModelView):
 
 其他的ModelVIew继承这个基类就行了，row_attributes这个方法跟django-suit框架使用方法一样：
 
-```python3
+```python
 
     def row_attributes(self, obj):
         if obj.status == 2:
