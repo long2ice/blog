@@ -110,7 +110,7 @@ params:
       url: favicon.ico
     title: Hugo # 页面title
     favicon: favicon.ico
-    board: <p>游客你好，欢迎来到long2ice的个人博客。</p> # 公告牌
+    board: <p>你好，欢迎来到long2ice的个人博客。</p> # 公告牌
 
   # Share
   # weibo,qq,qzone,wechat,tencent,douban,diandian,facebook,twitter,google,linkedin
