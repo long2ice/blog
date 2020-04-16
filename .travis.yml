@@ -1,0 +1,14 @@
+language: go
+script:
+  - hugo -t pure
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: public
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  fqdn: blog.long2ice.cn
+  on:
+    branch: master
+  email: long2ice@gmail.com
+  edge: true
