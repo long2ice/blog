@@ -1,4 +1,6 @@
 language: go
+install:
+  - apt-get install hugo
 script:
   - hugo -t pure
 deploy:
