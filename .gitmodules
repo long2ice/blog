@@ -1,3 +1,3 @@
-[submodule "themes/prue"]
-	path = themes/prue
+[submodule "themes/pure"]
+	path = themes/pure
 	url = https://github.com/xiaoheiAh/hugo-theme-pure.git
