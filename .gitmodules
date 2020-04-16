@@ -1,0 +1,4 @@
+[submodule "pure"]
+	path = theme/pure
+	url = https://github.com/xiaoheiAh/hugo-theme-pure.git
+	branch = master
