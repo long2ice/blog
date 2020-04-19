@@ -10,7 +10,7 @@ tags:
 
 ## 前言
 
-如果有使用过[django-suit](https://github.com/darklow/django-suit)—一个django admin的美化框架，这个框架的话，其admin设置中可以使用suit_row_attributes这个方法，在后台表单中设置表单列表中不同的行有不同的属性。这个方法在有些情况下很有用，比如说订单列表可以根据不同的订单状态在表单中呈现不同的样式，比如支付成功的可以设置为bootstrap的table-success，支付失败的可以设置为table-danger，这样在查看后台表单的时候可以更加一目了然。代码类似于下面这样：
+如果有使用过[django-suit]( https://github.com/darklow/django-suit )—一个django admin的美化框架，这个框架的话，其admin设置中可以使用suit_row_attributes这个方法，在后台表单中设置表单列表中不同的行有不同的属性。这个方法在有些情况下很有用，比如说订单列表可以根据不同的订单状态在表单中呈现不同的样式，比如支付成功的可以设置为bootstrap的table-success，支付失败的可以设置为table-danger，这样在查看后台表单的时候可以更加一目了然。代码类似于下面这样：
 
 ```python
 
@@ -25,11 +25,11 @@ tags:
 
 这样在订单状态为2的一行的时候，该行会显示为绿色。
 
-![表格显示](http://cdn.long2ice.cn/table-css.png "表格显示")
+![表格显示]( https://raw.githubusercontent.com/long2ice/blog/master/resources/images/table-css.png "表格显示" )
 
 ## 关于flask-admin
 
-由于最近在使用flask这个框架，对应的admin管理使用的是[flask-admin](https://flask-admin.readthedocs.io/en/latest/introduction/)，同样需要像django-suit这样设置row attributes。
+由于最近在使用flask这个框架，对应的admin管理使用的是[flask-admin]( https://flask-admin.readthedocs.io/en/latest/introduction/ )，同样需要像django-suit这样设置row attributes。
 
 关于django和flask，flask是一个微服务框架，本身只提供了基本的请求响应处理等功能，并且可以很快的搭建一个rest api服务，但是如果需要其他的，比如ORM、权限管理、后台管理等扩展功能，就需要一个一个集成第三方扩展；而django提供的是一站式全方位解决方案，包含admin管理、ORM、权限控制、模板引擎等，具体该使用哪个框架，需要视业务场景而定。
 

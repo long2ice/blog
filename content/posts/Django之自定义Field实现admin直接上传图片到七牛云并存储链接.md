@@ -26,7 +26,7 @@ class MyAdmin(admin.ModelAdmin):
 这样就将field字段覆盖为CustomWidget，在CustomWidget中，就可以自定义template和css等。这样的话在每个需要自定义的Field都需要这样做一次，如果使用频繁的话就不怎么推荐，推荐另一种更通用的方式，自定义models.py中的Field。
 
 ### 1、构建widgets
-要实现上传七牛的功能，首先在项目同名的目录下建一个widgets.py，实现自己的QiniuWidgets类，另外说一点的是，该实现参考了[django-ckeditor](https://github.com/django-ckeditor/django-ckeditor)项目，可以在admin中集成富文本编辑器，还是很不错的，推荐使用。
+要实现上传七牛的功能，首先在项目同名的目录下建一个widgets.py，实现自己的QiniuWidgets类，另外说一点的是，该实现参考了[django-ckeditor]( https://github.com/django-ckeditor/django-ckeditor )项目，可以在admin中集成富文本编辑器，还是很不错的，推荐使用。
 
 ```python
 
@@ -145,7 +145,7 @@ class QiniuUtils:
 ```
 
 ### 2、构建Field
-第一补构建好widgets之后，实际上已经可以通过覆盖form属性进行使用了，但是我们希望能使用更通用简便的方式，就好像使用[django-ckeditor](https://github.com/django-ckeditor/django-ckeditor)这个插件的时候，只需要在定时model的使用将字段定义成RichTextField，就可以在admin中直接以富文本形式展现了，实际上数据库中的存储方式也还是字符串类型，只不过在显示层更改了展现的方式，很多时候要明白框架内部的运行原理而不是只知道怎么去使用这个框架。
+第一补构建好widgets之后，实际上已经可以通过覆盖form属性进行使用了，但是我们希望能使用更通用简便的方式，就好像使用[django-ckeditor]( https://github.com/django-ckeditor/django-ckeditor )这个插件的时候，只需要在定时model的使用将字段定义成RichTextField，就可以在admin中直接以富文本形式展现了，实际上数据库中的存储方式也还是字符串类型，只不过在显示层更改了展现的方式，很多时候要明白框架内部的运行原理而不是只知道怎么去使用这个框架。
 
 ```python
 
