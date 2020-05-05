@@ -1,7 +1,7 @@
 ---
 title: flask-admin之自定义ModelView使不同行显示不同样式
 categories:
-  - 程序猿之路
+  - 程序天地
 date: 2019-03-18 21:12:25
 tags:
   - flask

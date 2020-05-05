@@ -1,7 +1,7 @@
 ---
 title: Django之自定义Field实现admin直接上传图片到七牛云并存储链接
 categories: 
-  - 程序猿之路
+  - 程序天地
 date: 2019-02-13 21:44:26
 tags:
   - django
