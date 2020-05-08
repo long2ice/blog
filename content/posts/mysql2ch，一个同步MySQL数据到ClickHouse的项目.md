@@ -19,11 +19,10 @@ tags:
 - 支持全量同步与增量同步。
 - 支持 DDL 与 DML，当前支持 DDL 字段新增与删除，支持所有的 DML。
 - 丰富的配置项。
-- 生产者与消费者 ui 监控。
 
 ## 依赖
 
-- [kafka](https://kafka.apache.org)，用户缓冲 MySQL binlog 的消息队列。
+- [kafka](https://kafka.apache.org)，缓冲 MySQL binlog 的消息队列。
 - [redis](https://redis.io)，缓存 MySQL binlog position 与 file。
 
 ## 安装
