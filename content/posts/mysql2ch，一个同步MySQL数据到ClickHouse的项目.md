@@ -34,61 +34,57 @@ pip install mysql2ch
 
 ## 使用
 
-在当前执行目录创建`.env`或者设置系统环境变量：
+配置文件
 
-.env
-
-```ini
-    # 设置为True会打印SQL
-    DEBUG=True
-
-    # 监控界面配置
-    UI_ENABLE=True
-    UI_REDIS_DB=1
-    UI_MAX_NUM=60
-
-    # sentry配置
-    ENVIRONMENT=development
-
-    MYSQL_HOST=127.0.0.1
-    MYSQL_PORT=3306
-    MYSQL_USER=root
-    MYSQL_PASSWORD=123456
-    MYSQL_SERVER_ID=101
-
-    REDIS_HOST=127.0.0.1
-    REDIS_PORT=6379
-    REDIS_DB=0
-
-    CLICKHOUSE_HOST=127.0.0.1
-    CLICKHOUSE_PORT=9002
-    CLICKHOUSE_PASSWORD=
-    CLICKHOUSE_USER=default
-
-    SENTRY_DSN=https://3450e192063d47aea7b9733d3d52585f@sentry.test.com/1
-
-    KAFKA_SERVER=127.0.0.1:9092
-    KAFKA_TOPIC=mysql2ch
-
-    # 配置需要同步的数据表
-    SCHEMA_TABLE=test.test;
-    # 配置kafka分区与schema映射
-    PARTITIONS=test=0;
-
-    # 初始binlog信息，后续会从redis读取
-    INIT_BINLOG_FILE=binlog.000474
-    INIT_BINLOG_POS=155
-
-    # 每多少条提交一次
-    INSERT_NUMS=20000
-    # 每多少秒提交一次
-    INSERT_INTERVAL=60
-
+```json
+{
+  "debug": true,
+  "environment": "development",
+  "mysql_host": "127.0.0.1",
+  "mysql_port": 3306,
+  "mysql_user": "root",
+  "mysql_password": "123456",
+  "mysql_server_id": 21,
+  "redis_host": "127.0.0.1",
+  "redis_port": 6379,
+  "redis_password": null,
+  "redis_db": 0,
+  "clickhouse_host": "127.0.0.1",
+  "clickhouse_port": 9000,
+  "clickhouse_user": "default",
+  "clickhouse_password": "123456",
+  "kafka_server": "127.0.0.1:9092",
+  "kafka_topic": "test",
+  "sentry_dsn": "https://3450e192063d47aea7b9733d3d52585f@sentry.prismslight.com/12",
+  "schema_table": {
+    "test": {
+      "tables": [
+        "test"
+      ],
+      "kafka_partition": 0
+    }
+  },
+  "init_binlog_file": "mysql-bin.000005",
+  "init_binlog_pos": 11090597,
+  "log_pos_prefix": "mysql2ch",
+  "skip_delete_tables": [
+    "test.test2"
+  ],
+  "skip_update_tables": [
+    "test.test2"
+  ],
+  "skip_dmls": [
+    "delete",
+    "update"
+  ],
+  "insert_num": 20000,
+  "insert_interval": 60
+}
 ```
 
 ## 全量同步
 
-你可能需要在开始增量同步之前进行一次全量导入，或者使用`--renew`重新全量导入。
+你可能需要在开始增量同步之前进行一次全量导入，或者使用`--renew`重新全量导入，该操作会删除目标表并重新同步。
 
 ```shell
     $ mysql2ch etl -h
@@ -127,64 +123,76 @@ mysql2ch produce
                             Kafka auto offset reset,default earliest.
 ```
 
-## 监控界面
-
-```shell
-    $ mysql2ch ui -h
-
-    usage: mysql2ch ui [-h] [--host HOST] [-p PORT]
-
-    optional arguments:
-      -h, --help            show this help message and exit
-      --host HOST           Listen host.
-      -p PORT, --port PORT  Listen port.
-```
-
 ## 使用 docker-compose（推荐）
 
 ```yaml
-version: "3"
+version: '3'
 services:
+  zookeeper:
+    image: bitnami/zookeeper:3
+    hostname: zookeeper
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    volumes:
+      - zookeeper:/bitnami
+  kafka:
+    image: bitnami/kafka:2
+    hostname: kafka
+    environment:
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - JMX_PORT=23456
+      - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=true
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
+    depends_on:
+      - zookeeper
+    volumes:
+      - kafka:/bitnami
+  kafka-manager:
+    image: hlebalbau/kafka-manager
+    ports:
+      - "9000:9000"
+    depends_on:
+      - kafka
+      - zookeeper
+    environment:
+      ZK_HOSTS: "zookeeper:2181"
+      KAFKA_MANAGER_AUTH_ENABLED: "true"
+      KAFKA_MANAGER_USERNAME: admin
+      KAFKA_MANAGER_PASSWORD: 123456
+    command: -Dpidfile.path=/dev/null
   producer:
-    env_file:
-      - .env
     depends_on:
       - redis
-    image: long2ice/mysql2ch:latest
-    command: mysql2ch produce
-  # add more service if you need.
+      - kafka
+      - zookeeper
+    image: long2ice/mysql2ch
+    command: mysql2ch -c config.json produce
+    volumes:
+      - ./config.json:/src/config.json
   consumer.test:
-    env_file:
-      - .env
     depends_on:
       - redis
-      - producer
-    image: long2ice/mysql2ch:latest
-    # consume binlog of test
-    command: mysql2ch consume --schema test
+      - kafka
+      - zookeeper
+    image: long2ice/mysql2ch
+    command: mysql2ch -c config.json consume --schema test
+    volumes:
+    - ./config.json:/src/config.json
   redis:
     hostname: redis
     image: redis:latest
     volumes:
       - redis:/data
-  ui:
-    env_file:
-      - .env
-    ports:
-      - 5000:5000
-    depends_on:
-      - redis
-      - producer
-      - consumer
-    image: long2ice/mysql2ch
-    command: mysql2ch ui
 volumes:
   redis:
+  kafka:
+  zookeeper:
 ```
 
 ## 可选
 
-[Sentry](https://github.com/getsentry/sentry)，错误报告，在`.env`配置 `SENTRY_DSN`后开启。
+[Sentry](https://github.com/getsentry/sentry)，错误报告，在`config.json`配置 `sentry_dsn`后开启。
 
 ## 开源许可
 
