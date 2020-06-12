@@ -142,8 +142,7 @@ optional arguments:
 
 ## 使用 docker-compose（推荐）
 
-<details>
-<summary>Redis，轻量级消息队列，应对低并发场景</summary>
+### Redis，轻量级消息队列，应对低并发场景
 
 ```yaml
 version: "3"
@@ -171,10 +170,7 @@ volumes:
   redis:
 ```
 
-</details>
-
-<details>
-<summary>Kafka，应对高并发场景</summary>
+### Kafka，应对高并发场景
 
 ```yml
 version: "3"
@@ -236,11 +232,9 @@ volumes:
   zookeeper:
 ```
 
-</details>
-
 ## 可选
 
-[Sentry](https://github.com/getsentry/sentry)，错误报告，在`config.json`配置 `sentry_dsn`后开启。
+[Sentry](https://github.com/getsentry/sentry)，错误报告，在`mysql2ch.ini`配置 `dsn`后启用。
 
 ## 开源许可
 

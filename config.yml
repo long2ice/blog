@@ -1,28 +1,28 @@
 baseURL: https://blog.long2ice.cn/
 theme: pure
 title: long2ice的个人博客
-defaultContentLanguage: zh  # en/zh/...
+defaultContentLanguage: zh # en/zh/...
 footnoteReturnLinkContents: ↩
 hasCJKLanguage: true
 paginate: 7
 enableEmoji: true
-googleAnalytics: ""      # UA-XXXXXXXX-X 
+googleAnalytics: "" # UA-XXXXXXXX-X
 permalinks:
   posts: /:year/:month/:filename/
 
 taxonomies:
-    category : categories
-    tag : tags
-    series : series
-outputFormats:          # use for search. recommend not to modify 
+  category: categories
+  tag: tags
+  series: series
+outputFormats: # use for search. recommend not to modify
   SearchIndex:
     mediaType: "application/json"
     baseName: "searchindex"
     isPlainText: true
     notAlternative: true
-    
+
 outputs:
-    home: ["HTML","RSS","SearchIndex"]  # recommend not to modify
+  home: ["HTML", "RSS", "SearchIndex"] # recommend not to modify
 # sitemap
 sitemap:
   changefreq: monthly
@@ -33,7 +33,7 @@ menu:
   main:
     - identifier: home
       name: Home
-      title: 首页 
+      title: 首页
       url: /
       weight: 1
 
@@ -61,7 +61,6 @@ menu:
       url: /about
       weight: 5
 
-
 params:
   since: 2017
   dateFormatToUse: "2006-01-02"
@@ -72,7 +71,7 @@ params:
   # Icon Reference: http://blog.cofess.com/hexo-theme-pure/iconfont/demo_fontclass.html
   enableMathJax: true #Enable mathjax support, to use mathematical notations
   menuIcons:
-    enable: true  # 是否启用导航菜单图标
+    enable: true # 是否启用导航菜单图标
     home: icon-home-fill
     archives: icon-archives-fill
     categories: icon-folder
@@ -110,7 +109,7 @@ params:
       url: favicon.ico
     title: Hugo # 页面title
     favicon: favicon.ico
-    board: <p>欢迎来到long2ice的个人博客。</p> # 公告牌
+    board: <p>爱生活，爱coding。</p> # 公告牌
 
   # Share
   # weibo,qq,qzone,wechat,tencent,douban,diandian,facebook,twitter,google,linkedin
@@ -121,12 +120,12 @@ params:
 
   # Comment
   comment:
-    type:  disqus # type disqus/gitalk/valine 启用哪种评论系统
+    type: disqus # type disqus/gitalk/valine 启用哪种评论系统
     disqus: long2ice # enter disqus shortname here
     gitalk: # gitalk. https://gitalk.github.io/
       owner: #必须. GitHub repository 所有者，可以是个人或者组织。
       admin: #必须. GitHub repository 的所有者和合作者 (对这个 repository 有写权限的用户)。
-      repo:  #必须. GitHub repository.
+      repo: #必须. GitHub repository.
       ClientID: #必须. GitHub Application Client ID.
       ClientSecret: #必须. GitHub Application Client Secret.
     valine: # Valine. https://valine.js.org
@@ -187,4 +186,3 @@ params:
     - category
     - tag
     - recent_posts
-
