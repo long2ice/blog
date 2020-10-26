@@ -89,7 +89,7 @@ params:
     author: long2ice
     author_title: 你好，世界。
     author_description: 一枚普通后端程序猿。
-    location: Chongqing, China
+    location: ChongQing, China
     follow: https://github.com/long2ice
     # Social Links
     social:
