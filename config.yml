@@ -4,9 +4,9 @@ title: long2ice的个人博客
 defaultContentLanguage: zh # en/zh/...
 footnoteReturnLinkContents: ↩
 hasCJKLanguage: true
-paginate: 7
+paginate: 10
 enableEmoji: true
-googleAnalytics: "" # UA-XXXXXXXX-X
+googleAnalytics: G-VKSRRSR9Z6
 permalinks:
   posts: /:year/:month/:filename/
 
@@ -22,7 +22,7 @@ outputFormats: # use for search. recommend not to modify
     notAlternative: true
 
 outputs:
-  home: ["HTML", "RSS", "SearchIndex"] # recommend not to modify
+  home: [ "HTML", "RSS", "SearchIndex" ] # recommend not to modify
 # sitemap
 sitemap:
   changefreq: monthly
@@ -66,7 +66,7 @@ params:
   dateFormatToUse: "2006-01-02"
   enablePostCopyright: false
   # the directory under content folder that you want to render
-  mainSections: ["posts"]
+  mainSections: [ "posts" ]
   # Enable/Disable menu icons
   # Icon Reference: http://blog.cofess.com/hexo-theme-pure/iconfont/demo_fontclass.html
   enableMathJax: true #Enable mathjax support, to use mathematical notations
