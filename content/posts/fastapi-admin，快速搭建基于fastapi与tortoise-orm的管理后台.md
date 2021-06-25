@@ -1,10 +1,10 @@
 ---
-title: "Fastapi Admin，快速搭建基于fastapi与tortoise-orm的管理后台"
+title: "FastAPI-Admin，快速搭建基于fastapi与tortoise-orm的管理后台"
 date: 2020-05-05T17:15:14+08:00
 categories:
   - 程序天地
 tags:
-  - fastapi
+  - FastAPI
   - admin
   - tortoise-orm
 ---
@@ -46,29 +46,29 @@ FastAPI-admin 提供了开箱即用的 CRUD，只需少量的配置。
 3. 执行`python setup.py install`。
 4. 执行`env PYTHONPATH=./ DATABASE_URL=mysql://root:123456@127.0.0.1:3306/fastapi-admin python3 examples/main.py`：
 
-    ```log
-    INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-    INFO:     Started reloader process [89005]
-    INFO:     Started server process [89009]
-    INFO:     Waiting for application startup.
-    INFO:     Tortoise-ORM startup
-        connections: {'default': 'mysql://root:123456@127.0.0.1:3306/fastapi-admin'}
-        apps: {'models': {'models': ['examples.models'], 'default_connection': 'default'}}
-    INFO:     Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x110ed6760>}, {'models': {'Category': <class 'examples.models.Category'>, 'Product': <class 'examples.models.Product'>, 'User': <class 'examples.models.User'>}}
-    INFO:     Tortoise-ORM generating schema
-    INFO:     Application startup complete.
-    ```
+   ```log
+   INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+   INFO:     Started reloader process [89005]
+   INFO:     Started server process [89009]
+   INFO:     Waiting for application startup.
+   INFO:     Tortoise-ORM startup
+       connections: {'default': 'mysql://root:123456@127.0.0.1:3306/fastapi-admin'}
+       apps: {'models': {'models': ['examples.models'], 'default_connection': 'default'}}
+   INFO:     Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x110ed6760>}, {'models': {'Category': <class 'examples.models.Category'>, 'Product': <class 'examples.models.Product'>, 'User': <class 'examples.models.User'>}}
+   INFO:     Tortoise-ORM generating schema
+   INFO:     Application startup complete.
+   ```
 
 5. 执行`cd front && npm install && npm run serve`:
 
-    ```log
-    App running at:
-    - Local:   http://localhost:8080/
-    - Network: http://192.168.10.23:8080/
+   ```log
+   App running at:
+   - Local:   http://localhost:8080/
+   - Network: http://192.168.10.23:8080/
 
-    Note that the development build is not optimized.
-    To create a production build, run yarn build.
-    ```
+   Note that the development build is not optimized.
+   To create a production build, run yarn build.
+   ```
 
 打开`http://localhost:8080/`进行体验。
 
@@ -195,31 +195,31 @@ FastAPI-admin 可导出 xlsx 文件，只需在`menu`设置`export=True`。
 
 1. 传入 `bulk_actions` 到 `Menu`，示例：
 
-    ```python
-    Menu(
-        bulk_actions=[{
-              'value': 'delete', # fastapi path参数
-              'text': 'delete_all', # 前端展示的
-        }]
-    )
-    ```
+   ```python
+   Menu(
+       bulk_actions=[{
+             'value': 'delete', # fastapi path参数
+             'text': 'delete_all', # 前端展示的
+       }]
+   )
+   ```
 
 2. 编写 fastapi 路由，示例：
 
-    ```python
-    from fastapi_admin.schemas import BulkIn
-    from fastapi_admin.factory import app as admin_app
+   ```python
+   from fastapi_admin.schemas import BulkIn
+   from fastapi_admin.factory import app as admin_app
 
-    @admin_app.post(
-        '/rest/{resource}/bulk/delete' # `delete` is defined in Menu before.
-    )
-    async def bulk_delete(
-            bulk_in: BulkIn,
-            model=Depends(get_model)
-    ):
-        await model.filter(pk__in=bulk_in.pk_list).delete()
-        return {'success': True}
-    ```
+   @admin_app.post(
+       '/rest/{resource}/bulk/delete' # `delete` is defined in Menu before.
+   )
+   async def bulk_delete(
+           bulk_in: BulkIn,
+           model=Depends(get_model)
+   ):
+       await model.filter(pk__in=bulk_in.pk_list).delete()
+       return {'success': True}
+   ```
 
 ## 部署
 
