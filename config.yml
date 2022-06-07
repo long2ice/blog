@@ -186,3 +186,8 @@ params:
     - category
     - tag
     - recent_posts
+  # ads
+  ads:
+    adsense:
+      enable: true
+      client: ca-pub-4103172601745047
