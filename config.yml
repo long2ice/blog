@@ -186,6 +186,7 @@ params:
     - category
     - tag
     - recent_posts
+
   # ads
   ads:
     adsense:
