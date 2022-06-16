@@ -45,13 +45,13 @@ tags:
 
 然后复制 list.html 这个模板到 flask 的 templates/admin/model 目录下面，找到其对应 table 的地方，在 115 行这里：
 
-![](http://cdn.long2ice.cn/20190318221148.png)
+![list](/flask-admin/list.webp)
 
 明显这里 tr 没有任何的 class 和可供操作的地方，所以只能重写模板了。
 
 重写后代码如下，flask 使用的是 jinja2 模板语法：
 
-![](http://cdn.long2ice.cn/20190318221321.png)
+![list rewrite](/flask-admin/list-rewrite.webp)
 
 然后在 ModelView 里面自定义 ModelView:
 
