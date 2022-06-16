@@ -1,4 +1,4 @@
-# My blog，powered by hugo
+# My blog, powered by hugo
 
 ## Address
 
