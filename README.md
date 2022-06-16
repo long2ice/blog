@@ -1,3 +1,9 @@
-# long2ice blog，powered by hugo
+# My blog，powered by hugo
 
-blog address：[https://blog.long2ice.cn](https://blog.long2ice.cn)
+## Address
+
+[https://blog.long2ice.io](https://blog.long2ice.io)
+
+## Screenshot
+
+![blog](./static/blog.png)
