@@ -14,7 +14,7 @@ FastAPI-Admin 是一个基于 FastAPI 与 TortoiseORM 的开箱即用的后台�
 
 项目地址：<https://github.com/fastapi-admin/fastapi-admin>
 
-线上 DEMO：<https://fastapi-admin.long2ice.cn/admin/login>
+线上 DEMO：<https://fastapi-admin.long2ice.io/admin/login>
 
 用户名：`admin`
 
@@ -42,6 +42,6 @@ FastAPI-Admin 基于 FastAPI 与 TortoiseORM，使用 jinja2 渲染前端界面�
 
 ## 文档
 
-文档地址：<https://fastapi-admin-docs.long2ice.cn>
+文档地址：<https://fastapi-admin-docs.long2ice.io>
 
 目前英文文档更全面一些，中文文档还待编写中。

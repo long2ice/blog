@@ -18,7 +18,7 @@ FastAPI-admin 提供了开箱即用的 CRUD，只需少量的配置。
 
 ## 在线 demo 地址
 
-[https://fastapi-admin.long2ice.cn](https://fastapi-admin.long2ice.cn/)
+[https://fastapi-admin.long2ice.io](https://fastapi-admin.long2ice.io/)
 
 - 用户名: `admin`
 - 密码: `123456`
