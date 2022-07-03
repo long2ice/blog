@@ -90,9 +90,9 @@ params:
     gravatar: # Gravatar email address, if you enable Gravatar, your avatar config will be overriden
     author: long2ice
     author_title: Life is hard, code is simple
-    author_description: 一个普通后端程序猿，工作主要使用Python，Go也会，近期打算看看Rust，也在学习React。
+    author_description: 一个普通后端程序猿，工作中主要使用Python，Go也会，近期打算看看Rust，也在学习React。
     location: ChongQing, China
-    follow: https://github.com/long2ice
+    follow: https://www.long2ice.io
     # Social Links
     social:
       links:
@@ -118,7 +118,7 @@ params:
   share:
     enable: true # 是否启用分享
     sites: weibo,qq,wechat,facebook,twitter # PC端显示的分享图标
-    mobile_sites: weibo,qq,qzone # 移动端显示的分享图标
+    mobile_sites: weibo,qq,wechat,facebook,twitter # 移动端显示的分享图标
 
   # Comment
   comment:
