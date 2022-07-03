@@ -9,6 +9,7 @@ enableEmoji: true
 googleAnalytics: G-VKSRRSR9Z6
 permalinks:
   posts: /:year/:month/:filename/
+copyright: long2ice保留所有权利，转载需保留原文链接。
 
 taxonomies:
   category: categories
@@ -64,7 +65,8 @@ menu:
 params:
   since: 2017
   dateFormatToUse: "2006-01-02"
-  enablePostCopyright: false
+  enablePostCopyright: true
+  copyright_link: https://blog.long2ice.io
   # the directory under content folder that you want to render
   mainSections: ["posts"]
   # Enable/Disable menu icons
