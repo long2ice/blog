@@ -9,6 +9,8 @@ tags:
 ---
 ## 简介
 
+项目地址：<https://awesome.long2ice.io>
+
 最近突发奇想开发了一个Awesome项目搜索网站，整个网站看起来样子长这样。
 
 ![awesome](/awesome/awesome.png)
