@@ -90,7 +90,7 @@ params:
     gravatar: # Gravatar email address, if you enable Gravatar, your avatar config will be overriden
     author: long2ice
     author_title: Life is hard, code is simple
-    author_description: 一个普通后端程序猿，工作中主要使用Python，Go也会，近期打算看看Rust，也在学习React。
+    author_description: 后端工程师，主要使用Python和Go。喜欢折腾，喜欢分享。
     location: ChongQing, China
     follow: https://www.long2ice.io
     # Social Links
