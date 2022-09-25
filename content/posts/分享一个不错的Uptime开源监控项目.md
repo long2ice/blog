@@ -1,5 +1,5 @@
 ---
-title: "分享一个不错Uptime开源监控项目"
+title: "分享一个不错的Uptime开源监控项目"
 date: 2022-09-25T12:12:05+08:00
 categories:
   - 程序天地
