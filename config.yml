@@ -1,6 +1,6 @@
 baseURL: https://blog.long2ice.io
 theme: pure
-title: long2ice的个人博客
+title: long2ice 的个人博客
 defaultContentLanguage: zh # en/zh/...
 footnoteReturnLinkContents: ↩
 hasCJKLanguage: true
@@ -9,7 +9,7 @@ enableEmoji: true
 googleAnalytics: G-VKSRRSR9Z6
 permalinks:
   posts: /:year/:month/:filename/
-copyright: long2ice保留所有权利，转载需保留原文链接。
+copyright: long2ice 保留所有权利，转载需保留原文链接。
 
 taxonomies:
   category: categories
@@ -56,12 +56,6 @@ menu:
       url: /tags
       weight: 4
 
-    - identifier: about
-      name: About
-      title: 关于
-      url: /about
-      weight: 5
-
 params:
   since: 2017
   dateFormatToUse: "2006-01-02"
@@ -90,8 +84,8 @@ params:
     gravatar: # Gravatar email address, if you enable Gravatar, your avatar config will be overriden
     author: long2ice
     author_title: Life is hard, code is simple
-    author_description: 后端工程师，主要使用Python和Go。喜欢折腾，喜欢分享。
-    location: ChongQing, China
+    author_description: 后端工程师，Python、Go、NodeJS 等主流技术都有涉及。喜欢折腾，喜欢分享。
+    location: China
     follow: https://www.long2ice.io
     # Social Links
     social:
