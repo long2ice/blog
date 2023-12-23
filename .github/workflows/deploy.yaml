@@ -12,12 +12,9 @@ jobs:
         uses: peaceiris/actions-hugo@v2
       - name: Build
         run: hugo --minify
-      - name: Deploy
-        uses: shallwefootball/s3-upload-action@master
+      - name: Setup Rclone
+        uses: AnimMouse/setup-rclone@v1
         with:
-          endpoint: ${{ secrets.S3_ENDPOINT }}
-          aws_key_id: ${{ secrets.S3_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.S3_SECRET_ACCESS_KEY }}
-          aws_bucket: ${{ secrets.S3_BUCKET }}
-          source_dir: 'public'
-          destination_dir: '/blog'
+          rclone_config: ${{ secrets.RCLONE_CONFIG }}
+      - name: Deploy
+        run: 'rclone sync public/ minio:/websites/blog'
