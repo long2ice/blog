@@ -1,25 +1,23 @@
 name: deploy
 on: [ push ]
 jobs:
-  build:
-    permissions:
-      contents: read
-      packages: write
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Build and Publish
-        uses: VaultVulp/gp-docker-action@1.6.0
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          image-name: blog
   deploy:
     runs-on: ubuntu-latest
-    needs:
-      - build
     steps:
-      - name: Deploy
-        uses: steebchen/kubectl@v2.0.0
+      - uses: actions/checkout@v4
         with:
-          config: ${{ secrets.KUBE_CONFIG }}
-          command: rollout restart deployment blog
+          submodules: true
+          fetch-depth: 0
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+      - name: Build
+        run: hugo --minify
+      - name: Deploy
+        uses: shallwefootball/s3-upload-action@master
+        with:
+          endpoint: ${{ secrets.S3_ENDPOINT }}
+          aws_key_id: ${{ secrets.S3_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.S3_SECRET_ACCESS_KEY }}
+          aws_bucket: ${{ secrets.S3_BUCKET }}
+          source_dir: 'public'
+          destination_dir: '/blog'
