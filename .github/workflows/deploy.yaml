@@ -17,4 +17,4 @@ jobs:
         with:
           rclone_config: ${{ secrets.RCLONE_CONFIG }}
       - name: Deploy
-        run: 'rclone sync public/ minio:/websites/blog'
+        run: rclone sync public/ minio:/websites/blog
