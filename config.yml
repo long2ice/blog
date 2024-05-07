@@ -1,0 +1,54 @@
+baseURL: https://blog.long2ice.io
+theme: PaperMod
+title: long2ice 的个人博客
+pagination:
+  pagerSize: 5
+copyright: All rights reserved @ long2ice
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+menu:
+  main:
+    - identifier: home
+      name: 首页
+      url: /
+      weight: 1
+    - identifier: posts
+      name: 文章
+      url: /posts
+      weight: 2
+    - identifier: categories
+      name: 分类
+      url: /categories
+      weight: 3
+    - identifier: tags
+      name: 标签
+      url: /tags
+      weight: 4
+    - identifier: search
+      name: 搜索
+      url: /search
+      weight: 5
+params:
+  ShowCodeCopyButtons: true
+  comments: true
+  showtoc: true
+  tocopen: true
+  profileMode:
+    enabled: true
+    subtitle: Life is hard, code is simple
+    imageUrl: avatar.jpeg
+    buttons:
+      - name: 文章
+        url: posts
+      - name: 分类
+        url: tags
+      - name: 标签
+        url: categories
+  socialIcons:
+    - name: github
+      url: https://github.com/long2ice
+    - name: twitter
+      url: https://twitter.com/long2ice
