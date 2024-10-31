@@ -32,6 +32,7 @@ menu:
       url: /search
       weight: 5
 params:
+  social: true
   ShowCodeCopyButtons: true
   comments: true
   showtoc: true
